@@ -1,6 +1,14 @@
 import { NextResponse } from 'next/server';
+import { headers } from 'next/headers';
 import dbConnect from '@/lib/mongodb';
 import Feedback from '@/app/models/Feedback';
+
+// Helper function to get the client's IP address
+function getClientIp(req: Request) {
+  const forwarded = req.headers.get('x-forwarded-for');
+  const ip = forwarded ? forwarded.split(/, /)[0] : req.headers.get('x-real-ip');
+  return ip || 'unknown';
+}
 
 export async function POST(request: Request) {
   try {
@@ -15,10 +23,16 @@ export async function POST(request: Request) {
 
     await dbConnect();
 
+    // Get client IP and user agent
+    const ipAddress = getClientIp(request);
+    const userAgent = request.headers.get('user-agent') || 'unknown';
+
     // Create new feedback
     const feedback = await Feedback.create({
       sessionId,
-      rating
+      rating,
+      ipAddress,
+      userAgent
     });
 
     return NextResponse.json(

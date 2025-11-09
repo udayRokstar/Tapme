@@ -11,6 +11,14 @@ const feedbackSchema = new mongoose.Schema({
     required: true,
     enum: ['Not Happy', 'Good', 'Satisfied']
   },
+  ipAddress: {
+    type: String,
+    required: false
+  },
+  userAgent: {
+    type: String,
+    required: false
+  },
   createdAt: {
     type: Date,
     default: Date.now

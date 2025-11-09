@@ -27,11 +27,9 @@ export default function FeedbackPage() {
 
     try {
       const { data } = await axios.post('/api/feedback', { sessionId, rating });
-
-      setSubmitStatus({
-        type: 'success',
-        message: 'Thank you for your feedback!',
-      });
+      
+      // Redirect to home page with success message
+      router.push('/?feedback=success');
     } catch (error: any) {
       console.error('Error submitting feedback:', error);
       setSubmitStatus({
