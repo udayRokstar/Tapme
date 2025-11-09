@@ -65,7 +65,7 @@ export default function FeedbackPage() {
           <button
             key={item.label}
             onClick={() => handleRating(item.label)}
-            className="flex flex-col items-center justify-center p-6 rounded-2xl bg-white/10 hover:bg-white/20 transition-all duration-300 transform hover:scale-110"
+            className="cursor-pointer flex flex-col items-center justify-center p-6 rounded-2xl bg-white/10 hover:bg-white/20 transition-all duration-300 transform hover:scale-110"
           >
             <span className="text-6xl md:text-8xl mb-4">{item.emoji}</span>
             <span className="text-white text-xl font-medium">{item.label}</span>
@@ -75,7 +75,7 @@ export default function FeedbackPage() {
       
       <button
         onClick={() => router.push('/')}
-        className="mt-12 px-8 py-3 bg-white text-blue-600 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300"
+        className="mt-12 px-8 py-3 bg-white text-blue-600 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 cursor-pointer"
       >
         Back to Home
       </button>

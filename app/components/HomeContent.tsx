@@ -19,7 +19,7 @@ export default function HomeContent() {
   useEffect(() => {
     const interval = setInterval(() => {
       setColorIndex((prevIndex) => (prevIndex + 1) % colors.length);
-    }, 3000);
+    }, 2000);
 
     // Check for feedback success in URL
     if (searchParams.get('feedback') === 'success') {
@@ -44,7 +44,7 @@ export default function HomeContent() {
   return (
     <div 
       onClick={handleTap} 
-      className={`min-h-screen w-full bg-gradient-to-r ${colors[colorIndex]} transition-colors duration-1000 ease-in-out`}
+      className={`min-h-screen w-full bg-gradient-to-r ${colors[colorIndex]} transition-colors duration-1000 ease-in-out cursor-pointer`}
     >
       <div className="flex items-center justify-center h-screen flex-col">
         {!showFeedback ? (
